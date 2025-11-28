@@ -1,0 +1,45 @@
+-- DELETES THE DATABASE IF EXISTS --
+DROP DATABASE IF EXISTS users_manager;
+
+-- CREATES THE DATABASE --
+CREATE DATABASE users_manager;
+USE users_manager;
+
+-- CREATING THE TABLES --
+CREATE TABLE db_profile (
+  P_ID int PRIMARY KEY AUTO_INCREMENT,
+  P_EMAIL varchar(50) NOT NULL UNIQUE,
+  P_USERNAME varchar(40) NOT NULL UNIQUE,
+  P_PASSWORD varchar(40) NOT NULL,
+  P_NAME varchar(50) NOT NULL,
+  P_LASTNAME varchar(40) NOT NULL,
+  P_TELEPHONE char(9) NOT NULL
+);
+
+CREATE TABLE db_user (
+  U_ID int PRIMARY KEY,
+  U_GENDER enum('MALE', 'FEMALE', 'OTHER'),
+  U_CARD char(16),
+  FOREIGN KEY (U_ID) REFERENCES db_profile (P_ID) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+CREATE TABLE db_admin (
+  A_ID int PRIMARY KEY,
+  A_CURRENT_ACCOUNT char(16),
+  FOREIGN KEY (A_ID) REFERENCES db_profile (P_ID) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+-- INSERTS IN THE TABLES --
+INSERT INTO db_profile (P_EMAIL, P_USERNAME, P_PASSWORD, P_NAME, P_LASTNAME, P_TELEPHONE) VALUES
+('admin@sandia.com', 'admin', 'Ab123456', 'Admin', 'Sandia', '123456789'),
+('user1@sandia.com', 'user1', 'Ab123456', 'User 1', 'Sandia', '987654321'),
+('user2@sandia.com', 'user2', 'Ab123456', 'User 2', 'Sandia', '987867321'),
+('user3@sandia.com', 'user3', 'Ab123456', 'User 3', 'Sandia', '687864451');
+
+INSERT INTO db_admin (A_ID, A_CURRENT_ACCOUNT) VALUES
+(1, '1234123412341234');
+
+INSERT INTO db_user (U_ID, U_GENDER, U_CARD) VALUES
+(2, 'MALE', '4321432143214321'),
+(3, 'FEMALE', '4321432337914321'),
+(4, 'OTHER', '4305332143214321');
