@@ -1,0 +1,133 @@
+// -- DELETES THE DATABASE --
+use users_manager
+db.dropDatabase()
+
+// -- CREATES DATABASE --
+use users_manager
+
+// -- CREATES COLLECTION WITH RESTRICTIONS --
+db.createCollection("profiles", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: ["type", "email", "username", "password", "name", "lastname", "telephone"],
+      properties: {
+        type: {
+          enum: ["User", "Admin"]
+        },
+        email: {
+          bsonType: "string",
+          pattern: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$"
+        },
+        username: {
+          bsonType: "string",
+          minLength: 3,
+          maxLength: 40
+        },
+        password: {
+          bsonType: "string",
+          minLength: 8,
+          maxLength: 40
+        },
+        name: {
+          bsonType: "string",
+          maxLength: 50
+        },
+        lastname: {
+          bsonType: "string",
+          maxLength: 40
+        },
+        telephone: {
+          bsonType: "string",
+          pattern: "^[0-9]{9}$"
+        },
+        gender: {
+          enum: ["MALE", "FEMALE", "OTHER"]
+        },
+        card: {
+          bsonType: "string",
+          pattern: "^[0-9]{16}$"
+        },
+        currentAccount: {
+          bsonType: "string",
+          pattern: "^[0-9]{16}$"
+        }
+      },
+      oneOf: [
+        {
+          properties: {
+            type: { enum: ["User"] }
+          },
+          required: ["gender", "card"],
+          not: {
+            required: ["currentAccount"]
+          }
+        },
+        {
+          properties: {
+            type: { enum: ["Admin"] }
+          },
+          required: ["currentAccount"],
+          not: {
+            anyOf: [
+              { required: ["gender"] },
+              { required: ["card"] }
+            ]
+          }
+        }
+      ]
+    }
+  }
+})
+
+// -- CREATES INDEX --
+db.profiles.createIndex({ email: 1 }, { unique: true })
+db.profiles.createIndex({ username: 1 }, { unique: true })
+db.profiles.createIndex({ type: 1 })
+
+// -- INSERTS PROFILES --
+db.profiles.insertMany([
+  {
+    type: "Admin",
+    email: "admin@sandia.com",
+    username: "admin",
+    password: "Ab123456",
+    name: "Admin",
+    lastname: "Sandia",
+    telephone: "123456789",
+    currentAccount: "1234123412341234"
+  },
+  {
+    type: "User",
+    email: "user1@sandia.com",
+    username: "user1",
+    password: "Ab123456",
+    name: "User 1",
+    lastname: "Sandia",
+    telephone: "987654321",
+    gender: "MALE",
+    card: "4321432143214321"
+  },
+  {
+    type: "User",
+    email: "user2@sandia.com",
+    username: "user2",
+    password: "Ab123456",
+    name: "User 2",
+    lastname: "Sandia",
+    telephone: "987867321",
+    gender: "FEMALE",
+    card: "4321432337914321"
+  },
+  {
+    type: "User",
+    email: "user3@sandia.com",
+    username: "user3",
+    password: "Ab123456",
+    name: "User 3",
+    lastname: "Sandia",
+    telephone: "687864451",
+    gender: "OTHER",
+    card: "4305332143214321"
+  }
+])

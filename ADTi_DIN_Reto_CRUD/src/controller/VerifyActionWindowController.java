@@ -29,7 +29,7 @@ public class VerifyActionWindowController implements Initializable
 
     private Controller controller;
     private Profile profile;
-    private int userDelete;
+    private String userDelete;
     private Runnable onUserDeletedCallback;
 
     @FXML
@@ -51,7 +51,7 @@ public class VerifyActionWindowController implements Initializable
      * @param controller the main application controller that manages business logic and data operations
      * @param userDelete the unique identifier of the user to be deleted, or -1 if deleting the currently logged-in user
      */
-    public void setController(Controller controller, int userDelete)
+    public void setController(Controller controller, String userDelete)
     {
         this.controller = controller;
         this.userDelete = userDelete;

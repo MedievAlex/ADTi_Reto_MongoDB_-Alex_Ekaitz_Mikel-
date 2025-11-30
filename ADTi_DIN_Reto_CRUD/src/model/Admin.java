@@ -22,7 +22,7 @@ public class Admin extends Profile
      * @param p_telephone the telephone number of the administrator
      * @param a_current_account the current administrative account number or identifier
      */
-    public Admin(int p_id, String p_email, String p_username, String p_password, String p_name, String p_lastname, String p_telephone, String a_current_account)
+    public Admin(String p_id, String p_email, String p_username, String p_password, String p_name, String p_lastname, String p_telephone, String a_current_account)
     {
         super(p_id, p_email, p_username, p_password, p_name, p_lastname, p_telephone);
         this.a_current_account = a_current_account;

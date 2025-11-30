@@ -23,7 +23,7 @@ public class MockModelDAO implements ModelDAO
      */
     public MockModelDAO()
     {
-        this.mockUser = new User(1, "test@test.com", "testuser", "Ab123456",
+        this.mockUser = new User("1", "test@test.com", "testuser", "Ab123456",
                 "Test", "User", "123456789", Gender.MALE, "1234567890123456");
         this.mockProfile = mockUser;
         this.mockUsers = new ArrayList<>();
@@ -130,12 +130,12 @@ public class MockModelDAO implements ModelDAO
      * @throws OurException if configured to throw exceptions
      */
     @Override
-    public boolean deleteUser(int id) throws OurException
+    public boolean deleteUser(String id) throws OurException
     {
         if (shouldThrowException)
         {
             throw exceptionToThrow;
         }
-        return id > 0;
+        return id.equals("1");
     }
 }

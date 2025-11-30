@@ -130,7 +130,7 @@ public class Controller
      * @return true if the deletion was successful, false if no user was found with the specified ID or the operation did not affect any records
      * @throws OurException if the deletion operation fails due to database constraints, referential integrity issues, or data access errors
      */
-    public boolean deleteUser(int id) throws OurException
+    public boolean deleteUser(String id) throws OurException
     {
         return dao.deleteUser(id);
     }

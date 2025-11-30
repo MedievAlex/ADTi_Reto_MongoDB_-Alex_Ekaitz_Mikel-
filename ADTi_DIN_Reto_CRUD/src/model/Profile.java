@@ -10,7 +10,7 @@ package model;
 public abstract class Profile
 {
 
-    protected int p_id;
+    protected String p_id;
     protected String p_email;
     protected String p_username;
     protected String p_password;
@@ -23,7 +23,7 @@ public abstract class Profile
      */
     public Profile()
     {
-        this.p_id = -1;
+        this.p_id = "";
         this.p_email = "";
         this.p_username = "";
         this.p_password = "";
@@ -43,7 +43,7 @@ public abstract class Profile
      * @param p_lastname the last name of the profile owner
      * @param p_telephone the telephone number of the profile owner
      */
-    public Profile(int p_id, String p_email, String p_username, String p_password, String p_name, String p_lastname, String p_telephone)
+    public Profile(String p_id, String p_email, String p_username, String p_password, String p_name, String p_lastname, String p_telephone)
     {
         this.p_id = p_id;
         this.p_email = p_email;
@@ -66,7 +66,7 @@ public abstract class Profile
      */
     public Profile(String p_email, String p_username, String p_password, String p_name, String p_lastname, String p_telephone)
     {
-        this.p_id = -1;
+        this.p_id = "";
         this.p_email = p_email;
         this.p_username = p_username;
         this.p_password = p_password;
@@ -80,7 +80,7 @@ public abstract class Profile
      *
      * @return the profile ID, or -1 if the profile hasn't been persisted
      */
-    public int getId()
+    public String getId()
     {
         return p_id;
     }
@@ -90,7 +90,7 @@ public abstract class Profile
      *
      * @param p_id the new ID to assign to the profile
      */
-    public void setId(int p_id)
+    public void setId(String p_id)
     {
         this.p_id = p_id;
     }
@@ -223,8 +223,7 @@ public abstract class Profile
     @Override
     public String toString()
     {
-        return "ID: " + p_id + ", Email: " + p_email + ", Username: " + p_username + ", Password: " + p_password + ", Name: " + p_name + ", Last name: " + p_lastname
-                + ", Telephone: " + p_telephone;
+        return "ID: " + p_id + ", Email: " + p_email + ", Username: " + p_username + ", Password: " + p_password + ", Name: " + p_name + ", Last name: " + p_lastname + ", Telephone: " + p_telephone;
     }
 
     /**

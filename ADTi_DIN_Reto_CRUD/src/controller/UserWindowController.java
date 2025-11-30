@@ -225,7 +225,7 @@ public class UserWindowController implements Initializable
             Parent root = loader.load();
 
             VerifyUserWindowController verifyController = loader.getController();
-            verifyController.setController(this.controller, -1);
+            verifyController.setController(this.controller, null);
 
             verifyController.setOnUserDeletedCallback(() ->
             {

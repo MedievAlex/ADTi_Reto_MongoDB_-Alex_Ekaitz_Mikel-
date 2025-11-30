@@ -28,7 +28,8 @@ public class VerifyCaptchaWindowController implements Initializable
 
     private Controller controller;
     private Profile profile;
-    private int code, userDelete;
+    private int code;
+    private String userDelete;
     private Runnable onUserDeletedCallback;
 
     @FXML
@@ -54,7 +55,7 @@ public class VerifyCaptchaWindowController implements Initializable
      * @param controller the main application controller that manages business logic and data operations
      * @param userDelete the unique identifier of the user to be deleted, or -1 if deleting the currently logged-in user
      */
-    public void setController(Controller controller, int userDelete)
+    public void setController(Controller controller, String userDelete)
     {
         this.controller = controller;
         this.userDelete = userDelete;
@@ -110,7 +111,7 @@ public class VerifyCaptchaWindowController implements Initializable
 
         try
         {
-            boolean success = controller.deleteUser(userDelete != -1 ? userDelete : profile.getId());
+            boolean success = controller.deleteUser(userDelete != null ? userDelete : profile.getId());
 
             if (success)
             {

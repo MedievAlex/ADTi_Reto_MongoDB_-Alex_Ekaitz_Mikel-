@@ -3,6 +3,7 @@ package main;
 import controller.Controller;
 import javafx.application.Application;
 import javafx.stage.Stage;
+import pool.ConnectionPool;
 
 /**
  * Main application class that serves as the entry point for the JavaFX application. This class extends JavaFX Application and is responsible for initializing the primary stage, creating the main controller, and launching the user interface.
@@ -25,6 +26,22 @@ public class Main extends Application
     {
         Controller controller = new Controller();
         controller.showWindow(stage);
+    }
+    
+    /**
+     * This method is called when the application should stop, and provides a 
+     * convenient place to clean up resources. It is called after the last window 
+     * has been closed or Platform.exit() is called.
+     * 
+     * Here we close the MongoDB connection to free up resources.
+     *
+     * @throws Exception if the cleanup process fails
+     */
+    @Override
+    public void stop() throws Exception {
+        System.out.println("Cerrando aplicación...");
+        ConnectionPool.close();
+        super.stop();
     }
 
     /**

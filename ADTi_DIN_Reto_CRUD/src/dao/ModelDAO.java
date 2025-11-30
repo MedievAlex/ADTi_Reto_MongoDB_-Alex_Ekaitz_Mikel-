@@ -40,7 +40,7 @@ public interface ModelDAO
      * @return true if the deletion was successful and affected at least one record, false if no user was found with the specified ID
      * @throws OurException if the deletion operation fails due to data integrity constraints, referential integrity issues, data access errors, or system failures
      */
-    public boolean deleteUser(int id) throws OurException;
+    public boolean deleteUser(String id) throws OurException;
 
     /**
      * Authenticates a user using provided credentials. This method should verify user identity by checking the provided credential (which can be username or email) and password against stored user data.
