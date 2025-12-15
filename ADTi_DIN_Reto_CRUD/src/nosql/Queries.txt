@@ -12,22 +12,8 @@ Ekaitz
 
 Mikel 
 
-- 
-- 
-- 
-(FALTA REPARTIR lAS QUERIES)
+- db.profiles.aggregate([{$match: {gender: 'FEMALE'},{$group:{_id: "$gender", usernames: { $push: "$username" }, lastname: { $push: "$lastname" }}}])
 
-db.profiles.findOne({lastname: 'Sandia'})
-db.profiles.find({lastname: 'Sandia', name: /2/})
+- db.profiles.aggregate([{$match: {lastname: 'Sandia', name: /a/i}},{$group:{_id: "$name", usernames: { $push: "$username" }, lastname: { $push: "$lastname" }}}])
 
-db.profiles.updateOne({name: 'User 1'},{$set: {telephone: '123459876'}})
-db.profiles.updateMany({name: /u/i},{$set: {lastname: 'Melocoton'})
-
-db.profiles.deleteOne({telephone: '687864451'})
-db.profiles.deleteMany({gender: 'OTHER'})
-
-db.profiles.aggregate([{$match: {gender: 'FEMALE'},{$group:{_id: "$gender", usernames: { $push: "$username" }, lastname: { $push: "$lastname" }}}])
-
-db.profiles.aggregate([{$match: {lastname: 'Sandia', name: /a/i}},{$group:{_id: "$name", usernames: { $push: "$username" }, lastname: { $push: "$lastname" }}}])
-
-db.profiles.aggregate([{ $match: { type:'User', gender:'MALE'}},{ $group: {_id: "$type",usernames: { $push: "$username" },TotalUsers: { $sum: 1 }}}])
+- db.profiles.aggregate([{ $match: { type:'User', gender:'MALE'}},{ $group: {_id: "$type",usernames: { $push: "$username" },TotalUsers: { $sum: 1 }}}])
