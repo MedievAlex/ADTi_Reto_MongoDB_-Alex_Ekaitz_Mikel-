@@ -11,10 +11,10 @@ Ekaitz
 - 
 
 Mikel 
-
 - db.profiles.updateOne({name: 'User 1'},{$set: {telephone: '123459876'}})
 - db.profiles.deleteMany({gender: 'OTHER'})
 - db.profiles.aggregate([{ $match: { type:'User', gender:'MALE'}},{ $group: {_id: "$type",usernames: { $push: "$username" },TotalUsers: { $sum: 1 }}}])
+
 
 
 
