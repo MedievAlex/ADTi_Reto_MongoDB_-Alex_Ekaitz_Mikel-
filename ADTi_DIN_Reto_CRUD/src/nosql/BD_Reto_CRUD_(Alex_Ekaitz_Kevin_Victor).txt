@@ -1,9 +1,8 @@
-// -- DELETES THE DATABASE --
+// -- SELECTS/CREATES DATABASE --
 use users_manager
-db.dropDatabase()
 
-// -- CREATES DATABASE --
-use users_manager
+// -- DELETES THE DATABASE --
+db.dropDatabase()
 
 // -- CREATES COLLECTION WITH RESTRICTIONS --
 db.createCollection("profiles", {

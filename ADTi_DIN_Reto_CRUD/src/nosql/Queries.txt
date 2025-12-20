@@ -6,17 +6,23 @@ Alex
 
 Ekaitz
 
-- 
-- 
-- 
+- Update many current-accounts by type:
+    db.profiles.updateMany({type: "Admin"}, {$set: {currentAccount: "0000000000000000"}})
 
-Mikel 
-- db.profiles.updateOne({name: 'User 1'},{$set: {telephone: '123459876'}})
-- db.profiles.deleteMany({gender: 'OTHER'})
-- db.profiles.aggregate([{ $match: { type:'User', gender:'MALE'}},{ $group: {_id: "$type",usernames: { $push: "$username" },TotalUsers: { $sum: 1 }}}])
+- Create "admin" user in the users_manager db:
+    db.createUser({ user: "admin", pwd: "abcd*1234", roles: [{ role: "dbOwner", db: "users_manager" }]})
 
-
+- Pipeline to group by gender, rename id field, sort alphabetically, skip first result (null group), and limit 2:
+    db.profiles.aggregate([{$group: {_id: "$gender", users: {$push: "$$ROOT"}, total: {$sum: 1}}}, {$project: {_id: 0, gender: "$_id", total: 1, users: 1}}, {$sort: {gender: 1}}, {$skip: 1}, {$limit: 2}])
 
 
+Mikel
 
+- Update one telephone by name:
+    db.profiles.updateOne({name: "User 1"},{$set: {telephone: "123459876"}})
 
+- Delete many by gender:
+    db.profiles.deleteMany({gender: "OTHER"})
+
+- Pipeline to filter by type and gender, and group it by type:
+    db.profiles.aggregate([{ $match: { type:"User", gender:"MALE"}},{ $group: {_id: "$type",usernames: { $push: "$username" },TotalUsers: { $sum: 1 }}}])

@@ -9,12 +9,13 @@ import com.mongodb.client.MongoDatabase;
 import java.util.ResourceBundle;
 import java.util.concurrent.TimeUnit;
 
-public class ConnectionPool {
-
+public class ConnectionPool
+{
     private static final MongoClient CLIENT;
     private static final MongoDatabase DB;
 
-    static {
+    static
+    {
         ResourceBundle config = ResourceBundle.getBundle("config.classConfig");
         String uri = config.getString("Conn");
         String dbName = config.getString("Database");
@@ -36,12 +37,15 @@ public class ConnectionPool {
         DB = CLIENT.getDatabase(dbName);
     }
 
-    public static MongoDatabase getDatabase() {
+    public static MongoDatabase getDatabase()
+    {
         return DB;
     }
     
-    public static void close() {
-        if (CLIENT != null) {
+    public static void close()
+    {
+        if (CLIENT != null)
+        {
             CLIENT.close();
         }
     }
