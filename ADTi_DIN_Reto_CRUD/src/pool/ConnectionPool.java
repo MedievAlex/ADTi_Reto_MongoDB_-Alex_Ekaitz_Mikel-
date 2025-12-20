@@ -27,6 +27,8 @@ public class ConnectionPool {
                     .maxSize(Integer.parseInt(config.getString("maxPoolSize")))
                     .minSize(Integer.parseInt(config.getString("minPoolSize")))
                     .maxWaitTime(Long.parseLong(config.getString("maxWaitMillis")), TimeUnit.MILLISECONDS)
+                    // This configuration doesn't retain active connections, but defines the maximum time an idle connection can stay in the pool before been closed.
+                    .maxConnectionIdleTime(Integer.parseInt(config.getString("maxConnectionIdleTime")), TimeUnit.SECONDS)
             )
             .build();
 
