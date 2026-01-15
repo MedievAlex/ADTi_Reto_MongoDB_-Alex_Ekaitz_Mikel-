@@ -79,9 +79,13 @@ db.createCollection("profiles", {
   }
 })
 
-// -- CREATES INDEX --
+// -- CREATE FIRST INDEX --
 db.profiles.createIndex({ email: 1 }, { unique: true })
+
+// -- CREATE SECOND INDEX --
 db.profiles.createIndex({ username: 1 }, { unique: true })
+
+// -- CREATE THIRD INDEX --
 db.profiles.createIndex({ type: 1 })
 
 // -- INSERTS PROFILES --
@@ -91,8 +95,8 @@ db.profiles.insertMany([
     email: "admin@sandia.com",
     username: "admin",
     password: "Ab123456",
-    name: "Admin",
-    lastname: "Sandia",
+    name: "Mario",
+    lastname: "Antonieto",
     telephone: "123456789",
     currentAccount: "1234123412341234"
   },
