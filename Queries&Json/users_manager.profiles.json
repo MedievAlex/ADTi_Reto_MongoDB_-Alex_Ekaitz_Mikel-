@@ -1,0 +1,85 @@
+[
+  {
+    "_id": {
+      "$oid": "696a1671bb4a5780df19b44d"
+    },
+    "type": "Admin",
+    "email": "admin@sandia.com",
+    "username": "admin",
+    "password": "Ab123456",
+    "name": "Mario",
+    "lastname": "Antonieto",
+    "telephone": "123456789",
+    "currentAccount": "1234123412341234"
+  },
+  {
+    "_id": {
+      "$oid": "696a1671bb4a5780df19b44e"
+    },
+    "type": "User",
+    "email": "user1@sandia.com",
+    "username": "user1",
+    "password": "Ab123456",
+    "name": "User 1",
+    "lastname": "Sandia",
+    "telephone": "987654321",
+    "gender": "MALE",
+    "card": "4321432143214321"
+  },
+  {
+    "_id": {
+      "$oid": "696a1671bb4a5780df19b44f"
+    },
+    "type": "User",
+    "email": "sandy@sandia2517352.com",
+    "username": " saiez ",
+    "password": "Qwerty1234",
+    "name": " Sandia",
+    "lastname": "Sandiez",
+    "telephone": "666887755",
+    "gender": "FEMALE",
+    "card": "4434166572341889"
+  },
+  {
+    "_id": {
+      "$oid": "696a1671bb4a5780df19b450"
+    },
+    "type": "User",
+    "email": "say@sandia-sample.es",
+    "username": "sdy",
+    "password": "Qwerty1234",
+    "name": "Sandy",
+    "lastname": "Ez",
+    "telephone": "666887755",
+    "gender": "OTHER",
+    "card": "4305337765414321"
+  },
+  {
+    "_id": {
+      "$oid": "696a1671bb4a5780df19b451"
+    },
+    "type": "User",
+    "email": "user2@sandia.com",
+    "username": "user2",
+    "password": "Ab123456",
+    "name": "User 2",
+    "lastname": "Sandia",
+    "telephone": "987867321",
+    "gender": "FEMALE",
+    "card": "4321432337914321"
+  },
+  {
+    "_id": {
+      "$oid": "696a1671bb4a5780df19b452"
+    },
+    "type": "User",
+    "email": "user3@sandia.com",
+    "username": "user3",
+    "password": "Ab123456",
+    "name": "User 3",
+    "lastname": "Sandia",
+    "telephone": "687864451",
+    "gender": "OTHER",
+    "card": "4305332143214321"
+  }
+]
