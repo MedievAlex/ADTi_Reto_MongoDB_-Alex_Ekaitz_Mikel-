@@ -113,6 +113,27 @@ db.profiles.insertMany([
   },
   {
     type: "User",
+    email: "sandy@sandia2517352.com",
+    username: " saiez ",
+    password: "Qwerty1234",
+    name: " Sandia",
+    lastname: "Sandiez",
+    telephone: "666887755",
+    gender: "FEMALE",
+    card: "4434166572341889"},
+  {
+    type: "User",
+    email: "say@sandia-sample.es",
+    username: "sdy",
+    password: "Qwerty1234",
+    name: "Sandy",
+    lastname: "Ez",
+    telephone: "666887755",
+    gender: "OTHER",
+    card: "4305337765414321"
+  },
+  {
+    type: "User",
     email: "user2@sandia.com",
     username: "user2",
     password: "Ab123456",
